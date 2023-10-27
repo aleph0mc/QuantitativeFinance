@@ -192,7 +192,7 @@ rand_portf <- optimize.portfolio(R = tsData,
 chart.RiskReward(rand_portf, risk.col = "StdDev", return.col = "mean", chart.assets = T)
 
 # minimum risk portfolio - optimize standard dev
-# NOTE: ROI method requires ROI packages installed (see all_local_installed_packages.R)
+# NOTE: ROI method requires ROI packages installed
 portf_msd <- add.objective(portfolio = portf_specs, type = "risk", name = "StdDev")
 minVals <- optimize.portfolio(R = tsData,
                               portfolio = portf_msd,
