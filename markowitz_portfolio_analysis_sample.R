@@ -14,7 +14,7 @@ library(PortfolioAnalytics)
 
 theme_set(theme_minimal())
 
-# portfolio with 4 stocks
+# portfolio with 5 stocks
 stocks <- c("IBM", "GOOG", "TSLA", "AMZN", "AAPL")
 
 # download prices and create returns from Adjusted Prices - save in a list data1
