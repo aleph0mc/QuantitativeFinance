@@ -17,7 +17,7 @@ theme_set(theme_minimal())
 # portfolio with 5 stocks
 stocks <- c("IBM", "GOOG", "TSLA", "AMZN", "AAPL")
 
-# download prices and create returns from Adjusted Prices - save in a list data1
+# download prices and create returns from Adjusted Prices - save in a list
 # ROC <- rate of change or momentum
 stockData_ret <- lapply(stocks, FUN = function(stock) {
   ROC(Ad(getSymbols(stock, from = "2020-01-01", auto.assign = F)),
