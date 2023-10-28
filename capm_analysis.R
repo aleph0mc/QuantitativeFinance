@@ -66,7 +66,7 @@ model <- lm(dfLogMonthlyRets$Stock1_lr ~ dfLogMonthlyRets$SP500_lr)
 model_sum <- summary(model)
 intercept <- model_sum$coefficients[1]
 slope <- model_sum$coefficients[2]
-# plot the mode
+# plot the model
 par(mfrow = c(2,2))
 plot(model)
 
