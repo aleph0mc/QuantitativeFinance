@@ -79,7 +79,7 @@ print(paste0('Expected asset return: ', expect_return_yr_pc, "%"))
 
 # scatter plot
 ggplot(dfLogMonthlyRets, aes(x = Stock1_lr, y = SP500_lr)) + 
-  geom_point()+ 
+  geom_point() + 
   geom_smooth(method=lm,se=FALSE,fullrange=TRUE) +
   geom_smooth(method = 'gam', formula = y ~ poly(x, 4), color = 'midnightblue', linetype = 'solid', se = T) +
   labs(x = CONST_STOCK, y = 'S&P 500', caption = TeX(paste0("\\alpha=", intercept, " - ", "$\\beta=$", slope))) +
