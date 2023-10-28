@@ -18,7 +18,7 @@ theme_set(theme_minimal())
 # portfolio with the stock to check compare with the market, represented by the S&P 500 index
 CONST_STOCK <- "GIS" # General Mills
 stocks <- c(CONST_STOCK, "^GSPC")
-# Adjusted closing price is use 
+# Adjusted closing price is used 
 stockData <- lapply(stocks, FUN = function(stock) {
   Ad(getSymbols(stock, from = "2020-01-01", auto.assign = F))
 })
