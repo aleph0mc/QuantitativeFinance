@@ -61,7 +61,7 @@ corrplot(cor_mat)
 beta <- cov_val / varSP500
 print(beta)
  
-# computing beta using a linera model (linear regression)
+# computing beta using a linear model (linear regression)
 model <- lm(dfLogMonthlyRets$Stock1_lr ~ dfLogMonthlyRets$SP500_lr)
 model_sum <- summary(model)
 intercept <- model_sum$coefficients[1]
