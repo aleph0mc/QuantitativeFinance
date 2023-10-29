@@ -1,4 +1,4 @@
-setwd("C:\\...\\financial_market_analysis")
+setwd("C:\\Users\\milko\\OneDrive\\Documenti\\R_statistics_language\\financial_market_analysis")
 getwd()
 
 # portfolio analysis using Markowitz model
@@ -33,17 +33,26 @@ colnames(dfstockData) = c('Stock1', 'SP500')
 dfstockData = data.frame(Date = as.Date(row.names(dfstockData)), dfstockData)
 row.names(dfstockData) = NULL
 
+# daily rets
+dfLogDailyRets <- data.frame(Stock1_lr = diff(log(dfstockData$Stock1)), SP500_lr = diff(log(dfstockData$SP500)))
+# histogram of log returns - it approximates a normal distribution
+ggplot(dfLogDailyRets, mapping = aes(x = Stock1_lr)) +
+  geom_histogram(bins = 20, fill = 'yellow', color = 'red')
+# pause 1 sec to give time plot to be rendered
+Sys.sleep(1)
+
+# we need the monthly adjusted closing price
 # convert data frame to xts object
 xts_stock_ret <- xts(dfstockData[,-1], order.by=as_date(dfstockData$Date))
-# we need the monthly adjusted closing price
 xtsMonthly_Adj_Data <- xts_stock_ret[endpoints(xts_stock_ret,'months')]
-# convert xts to a data  frame
+# convert xts to a data frame
 dfMonthlyAd <- data.frame(date=index(xtsMonthly_Adj_Data), coredata(xtsMonthly_Adj_Data))
 # mean of adjusted close
 # data.frame[row, col], neg sign to remove cols, the current date
 colMeans(dfMonthlyAd[,-1])
 # compute the log returns
 dfLogMonthlyRets <- data.frame(Stock1_lr = diff(log(dfMonthlyAd$Stock1)), SP500_lr = diff(log(dfMonthlyAd$SP500)))
+
 # covariance value
 cov_val <- cov(dfLogMonthlyRets$Stock1_lr, dfLogMonthlyRets$SP500_lr)
 print(cov_val)
@@ -76,7 +85,6 @@ beta <- slope
 expect_return_yr <- risk_free_rate + beta * (mean(dfLogMonthlyRets$SP500)*12 - risk_free_rate)
 expect_return_yr_pc <- expect_return_yr * 100
 print(paste0('Expected asset return: ', expect_return_yr_pc, "%"))
-
 # scatter plot
 ggplot(dfLogMonthlyRets, aes(x = Stock1_lr, y = SP500_lr)) + 
   geom_point() + 
