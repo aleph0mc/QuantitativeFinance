@@ -135,7 +135,7 @@ print(opn_price_pv)
 
 # put option
 # initialization - two columns: first with 0s, second with payoff
-# payoff function is max(0, S-E)
+# payoff function is max(0, E-S)
 dfOpnData <- data.frame(zeros = rep(0, N_iter), payoff = rep(0, N_iter))
 # Wiener proicess with as many random numbers as iterations
 rand <- rnorm(N_iter)
