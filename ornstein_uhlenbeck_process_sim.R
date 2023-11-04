@@ -7,7 +7,7 @@ library(ggplot2)
 
 theme_set(theme_minimal())
 
-#################### Ornstein-Uhlenbeck process ####################
+#################### Ornstein-Uhlenbeck process simulation ####################
 # time step
 dt <- .1
 # Theta
