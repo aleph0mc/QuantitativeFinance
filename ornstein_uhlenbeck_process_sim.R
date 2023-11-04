@@ -4,14 +4,6 @@ getwd()
 # Wiener process simulation
 
 library(ggplot2)
-library(quantmod)
-library(lubridate)
-library(corrplot)
-library(PerformanceAnalytics)
-library(TTR)
-library(tidyr)
-library(PortfolioAnalytics)
-library(latex2exp)
 
 theme_set(theme_minimal())
 
