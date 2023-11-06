@@ -1,4 +1,4 @@
-setwd("C:\\...\\financial_market_analysis")
+setwd("C:\\Users\\milko\\OneDrive\\Documenti\\R_statistics_language\\financial_market_analysis")
 getwd()
 
 # Wiener process simulation
@@ -17,7 +17,7 @@ library(gridExtra)
 theme_set(theme_minimal())
 
 # stock historical data
-stock <- 'IBM'
+stock <- 'PLUG'
 xtsHistData <- getSymbols(stock, src = "yahoo", from = "2020-01-01", auto.assign = FALSE)
 # convert xts to data frame
 dfStockHistData <- data.frame(date=index(xtsHistData), coredata(xtsHistData))
@@ -38,6 +38,8 @@ stma <- 30
 dfStockHistData$lgma <- SMA(dfStockHistData$adjusted, lgma)
 # SMA short (fast SMA)
 dfStockHistData$stma <- SMA(dfStockHistData$adjusted, stma)
+# remove na
+dfStockHistData <- na.omit(dfStockHistData)
 
 #plot price fluctuations
 smapl <- ggplot(data = dfStockHistData, mapping = aes(x = as.Date(date))) +
@@ -64,7 +66,8 @@ Sys.sleep(1)
 dfStockHistData$lgexma <- EMA(dfStockHistData$adjusted, lgma)
 # Exponential Moving Average (EMA) for short period (fast EMA)
 dfStockHistData$stexma <- EMA(dfStockHistData$adjusted, stma)
-
+# remove na
+dfStockHistData <- na.omit(dfStockHistData)
 
 #plot price fluctuations
 emepl <- ggplot(data = dfStockHistData, mapping = aes(x = as.Date(date))) +
@@ -86,5 +89,3 @@ emepl <- ggplot(data = dfStockHistData, mapping = aes(x = as.Date(date))) +
 
 # plot sma and ema
 grid.arrange(smapl, emepl, nrow = 2)
-
-dfStockHistData <- na.omit(dfStockHistData)
