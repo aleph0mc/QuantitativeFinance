@@ -17,7 +17,7 @@ library(gridExtra)
 theme_set(theme_minimal())
 
 # stock historical data
-stock <- 'PLUG'
+stock <- 'IBM'
 xtsHistData <- getSymbols(stock, src = "yahoo", from = "2020-01-01", auto.assign = FALSE)
 # convert xts to data frame
 dfStockHistData <- data.frame(date=index(xtsHistData), coredata(xtsHistData))
