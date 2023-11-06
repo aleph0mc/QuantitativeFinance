@@ -1,8 +1,6 @@
 setwd("C:\\...\\financial_market_analysis")
 getwd()
 
-# Wiener process simulation
-
 library(ggplot2)
 library(quantmod)
 library(lubridate)
