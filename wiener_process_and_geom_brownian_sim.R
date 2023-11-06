@@ -1,4 +1,4 @@
-setwd("C:\\Users\\milko\\OneDrive\\Documenti\\R_statistics_language\\financial_market_analysis")
+setwd("C:\\...\\financial_market_analysis")
 getwd()
 
 # Wiener process simulation
