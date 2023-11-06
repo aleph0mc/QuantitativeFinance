@@ -1,8 +1,6 @@
 setwd("C:\\Users\\milko\\OneDrive\\Documenti\\R_statistics_language\\financial_market_analysis")
 getwd()
 
-# portfolio analysis using Markowitz model
-
 library(ggplot2)
 library(quantmod)
 library(lubridate)
